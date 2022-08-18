@@ -58,8 +58,7 @@ function exporterRetryStrategy(err, response, body, options){
 
 function send(collector, objects) {
     const serviceRequest = collector.convert(objects);
-    const serviceRequestTimeUnix = transform.convertTimeUnixNano(serviceRequest);
-    const write_request = transform.toTimeSeries(serviceRequestTimeUnix)
+    const write_request = transform.toTimeSeries(serviceRequest);
     const bytes = write_request.serializeBinary();
     const payload = SnappyJS.compress(bytes);
     let response;
