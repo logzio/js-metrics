@@ -39,7 +39,8 @@
     "codecov": "3.8.2",
     "cpx": "1.5.0",
     "express-http-context": "^1.2.4",
-    "mocha": "^7.2.0",
+    "mocha": "^10.0.0",
+    "request": "^2.88.2",
     "nyc": "15.1.0",
     "request-promise": "^4.2.6",
     "rimraf": "3.0.2",
@@ -59,7 +60,7 @@
     "google-protobuf": "^3.17.3",
     "nock": "^13.1.1",
     "protobufjs": "^6.9.0",
-    "requestretry": "^5.0.0",
+    "requestretry": "^7.1.0",
     "snappyjs": "^0.6.1",
     "winston": "^3.3.3"
   },
