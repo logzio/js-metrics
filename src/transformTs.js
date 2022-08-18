@@ -135,6 +135,41 @@ function checkNestedObjectByKeyValue(obj, objKey, objValue) {
     return false
 }
 
+function convertTimeUnixNano(metric){
+
+	const _sendTime = new Date().getTime() * 1000000;
+
+	const resources = metric['resourceMetrics'];
+    resources.forEach((_resource) => {
+        _resource.instrumentationLibraryMetrics.forEach((ilm) => {
+            let _metrics = ilm.metrics;
+            _metrics.forEach((_metric) => {
+                if (checkNestedObjectByKeyValue(_metric,'isMonotonic', true)) {
+                    _metric.doubleSum.dataPoints.forEach(dataPoint=>{
+						dataPoint.timeUnixNano = _sendTime;
+					  })
+                }
+                // Histogram metric
+                else if ('doubleHistogram' in _metric ) {
+                  _metric.doubleHistogram.dataPoints.forEach(dataPoint=>{
+					dataPoint.timeUnixNano = _sendTime;
+				  })
+                }
+				else if('intHistogram' in _metric){
+					_metric.intHistogram.dataPoints.forEach(dataPoint=>{
+						dataPoint.timeUnixNano = _sendTime;
+					  })
+				}
+                else {
+					throw new Error('Metric type is not supported')
+                }
+            })
+        })
+    })
+
+	return metric;
+}
+
 function toTimeSeries(otel_request) {
     const write_request = new wr.WriteRequest();
     const resources = otel_request['resourceMetrics'];
@@ -186,5 +221,6 @@ exports.convertToTsLSamples = convertToTsLSamples;
 exports.attachSample = attachSample;
 exports.convertToTsLSamples = convertToTsLSamples;
 exports.attachLabel = attachLabel;
+exports.convertTimeUnixNano = convertTimeUnixNano;
 
 
