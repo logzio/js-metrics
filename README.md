@@ -19,10 +19,10 @@ npm install logzio-nodejs-metrics-sdk@0.3.0
 
 Set the variables in the following code snippet:
 
-| Environment variable | Description                                                                                                                         |
-| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| url                  | The Logz.io Listener URL for for your region, configured to use port **8052** for http traffic, or port **8053** for https traffic. |
-| token                | Your Logz.io Prometheus Metrics account token.                                                                                      |
+| Environment variable | Description                                                                                                                                                                     |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| url                  | The Logz.io Listener URL for for your region, configured to use port **8052** for http traffic, or port **8053** for https traffic. For example - https://listener.logz.io:8053 |
+| token                | Your Logz.io Prometheus Metrics account token.                                                                                                                                  |
 
 ```js
 const MeterProvider = require('@opentelemetry/sdk-metrics-base');
