@@ -47,7 +47,7 @@
     "axios": "1.7.7",
     "google-protobuf": "3.21.4",
     "nock": "13.5.5",
-    "sinon": "^19.0.2",
+    "sinon": "^21.0.1",
     "snappyjs": "0.7.0",
     "winston": "3.14.2"
   },
